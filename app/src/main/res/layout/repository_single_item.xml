@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="repoDetails"
+            type="com.csapps.trendinggit.data.db.entities.RepoDetails" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/round_rect_bg"
+        >
+
+        <TextView
+            android:id="@+id/repoName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{repoDetails.repoName}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:textSize="@dimen/item_title_text_size"
+            android:padding="3dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <TextView
+            android:id="@+id/repoDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/repoName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{repoDetails.repoDesc}"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/item_body_text_size"
+            android:padding="3dp"
+            android:layout_marginStart="10dp"
+            android:visibility="@{repoDetails.repoDesc.length()>0 ? View.VISIBLE : View.GONE}"
+            />
+
+
+
+        <TextView
+            android:id="@+id/repoStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/repoDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@{repoDetails.repoStarCount}"
+            android:textColor="@color/dark_grey"
+            android:drawableStart="@drawable/star"
+            android:textSize="10sp"
+            android:padding="3dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/repoUpdatedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/repoDesc"
+            app:layout_constraintStart_toEndOf="@id/repoStars"
+            android:text="@{repoDetails.repoUpdatedDate}"
+            android:textColor="@color/dark_grey"
+            android:textStyle="italic"
+            android:textSize="10sp"
+            android:padding="3dp"
+            android:layout_marginTop="10dp"
+            android:visibility="@{repoDetails.repoUpdatedDate.length()>0 ? View.VISIBLE : View.GONE}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
